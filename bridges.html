@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projet BRIDGES — Sabine Garabedian</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ocean: #0a3d62;
+      --ocean-mid: #1a5276;
+      --reef: #1abc9c;
+      --sand: #fdf6e3;
+      --text: #1a1a2e;
+      --text-light: #5a6a7a;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--sand);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--ocean);
+      color: var(--white);
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+
+    h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 0.5rem; }
+
+    .container {
+      max-width: 900px;
+      margin: -2rem auto 4rem auto;
+      background: var(--white);
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .project-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      background: #f9fbfd;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 5px solid var(--reef);
+      margin-bottom: 2rem;
+    }
+
+    .meta-item strong { color: var(--ocean); display: block; font-size: 0.9rem; text-transform: uppercase; }
+    .meta-item a { color: var(--reef); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+    .meta-item a:hover { text-decoration: underline; }
+
+    h2 { font-family: 'Playfair Display', serif; color: var(--ocean); margin: 2rem 0 1rem 0; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+
+    p { margin-bottom: 1.2rem; text-align: justify; }
+
+    .btn-back {
+      display: inline-block;
+      margin-top: 2rem;
+      color: var(--ocean);
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-back:hover { color: var(--reef); transform: translateX(-5px); }
+
+    footer { text-align: center; padding: 2rem; color: var(--text-light); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Projet BRIDGES</h1>
+  <p>Bridges-Resilience : Transformation des socio-écosystèmes marins</p>
+</header>
+
+<main class="container">
+  <div class="project-meta">
+    <div class="meta-item">
+      <strong>Période</strong>
+      2024 — 2034 (10 ans)
+    </div>
+    <div class="meta-item">
+      <strong>Financement</strong>
+      France 2030 (Budget global : 28M€)
+    </div>
+    <div class="meta-item">
+      <strong>Partenaires & Lien</strong>
+      CNRS, Ifremer, IRD<br>
+      <a href="https://www.bridges-wio.com/fr/" target="_blank">🔗 Site officiel du projet</a>
+    </div>
+  </div>
+
+  <h2>Présentation du Projet</h2>
+  <p>
+    Le projet <strong>BRIDGES</strong> est une initiative d'envergure nationale et internationale dédiée à la transformation des socio-écosystèmes marins dans le sud-ouest de l'Océan Indien. Face aux changements globaux, ce programme vise à concilier conservation de la biodiversité marine et développement d'une pêche juste et durable.
+  </p>
+
+  <h2>Objectifs et Résilience</h2>
+  <p>
+    L'un des piliers centraux du projet est l'évaluation des risques et de la résilience du secteur halieutique. Mon implication porte spécifiquement sur l'analyse des vulnérabilités économiques face aux événements extrêmes et aux pressions environnementales croissantes.
+  </p>
+  <p>
+    Les recherches menées dans ce cadre permettent, par exemple, d'évaluer les impacts directs et indirects des cyclones tropicaux (tels que le cyclone <em>Chido</em> à Mayotte en 2024) sur l'économie de la pêche. Pour ce faire, nous mobilisons des modèles d'équilibre général calculable (MEGC) afin de simuler les chocs et de proposer des trajectoires de résilience pour les petits États et territoires insulaires.
+  </p>
+
+  <h2>Impact Territorial</h2>
+  <p>
+    Grâce au soutien de <strong>France 2030</strong>, BRIDGES favorise une approche interdisciplinaire où l'économie se lie à la biologie marine et à la gouvernance, assurant que les politiques de gestion des ressources soient basées sur des évidences scientifiques rigoureuses.
+  </p>
+
+  <a href="projets.html" class="btn-back">← Retour à la liste des projets</a>
+</main>
+
+<footer>
+  Sabine Garabedian — Université de La Réunion — CEMOI
+</footer>
+
+</body>
+</html>
