@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enseignements & Formation — Sabine Garabedian</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ocean: #0a3d62;
+      --ocean-mid: #1a5276;
+      --reef: #1abc9c;
+      --reef-light: #a8e6cf;
+      --sand: #fdf6e3;
+      --sand-dark: #f0e6c8;
+      --text: #1a1a2e;
+      --text-light: #5a6a7a;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--sand);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--ocean);
+      color: var(--white);
+      padding: 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 40px;
+      background: var(--sand);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    header a { color: var(--reef-light); text-decoration: none; font-size: 0.9rem; }
+    header h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-top: 0.4rem; }
+    header p { opacity: 0.72; font-size: 0.9rem; margin-top: 0.2rem; }
+
+    nav {
+      background: var(--ocean-mid);
+      display: flex;
+      border-bottom: 3px solid var(--reef);
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--white);
+      background: rgba(26,188,156,0.2);
+    }
+
+    main {
+      max-width: 1050px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    /* ── SECTION TITLES ── */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      color: var(--ocean);
+      border-left: 5px solid var(--reef);
+      padding-left: 0.9rem;
+      margin: 2.5rem 0 1.4rem;
+    }
+
+    .section-title:first-child { margin-top: 0; }
+
+    /* ── STAT BANNER ── */
+    .stat-banner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-box {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.2rem 1rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(10,61,98,0.08);
+      border-top: 4px solid var(--reef);
+    }
+
+    .stat-box .val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--ocean);
+    }
+
+    .stat-box .lbl {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.2rem;
+    }
+
+    /* ── COURSE TABLE ── */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 14px rgba(10,61,98,0.09);
+      margin-bottom: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      font-size: 0.88rem;
+    }
+
+    thead th {
+      background: var(--ocean);
+      color: var(--white);
+      padding: 0.85rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    tbody tr:nth-child(even) { background: #f6fafd; }
+    tbody tr:hover { background: #e8f8f4; }
+
+    tbody td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--sand-dark);
+      vertical-align: top;
+      color: var(--text-light);
+    }
+
+    tbody td:first-child {
+      color: var(--ocean);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    tbody td strong { color: var(--text); }
+
+    .level-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
+    .lvl-m2  { background: #d5f5e3; color: #1a7a4a; }
+    .lvl-m1  { background: #d6eaf8; color: #1a5276; }
+    .lvl-l3  { background: #fdebd0; color: #9c5a00; }
+    .lvl-l2  { background: #fce4ec; color: #880e4f; }
+    .lvl-l1  { background: #e8daef; color: #5b2c6f; }
+
+    .vol-badge {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      font-style: italic;
+    }
+
+    /* ── FORMATION CARDS ── */
+    .formation-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .formation-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.3rem 1.5rem;
+      box-shadow: 0 2px 10px rgba(10,61,98,0.07);
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      border-left: 4px solid transparent;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .formation-card:hover {
+      box-shadow: 0 6px 20px rgba(10,61,98,0.13);
+      transform: translateY(-2px);
+    }
+
+    .formation-card.new-entry { border-left-color: var(--reef); }
+    .formation-card.regular   { border-left-color: #3498db; }
+    .formation-card.intl      { border-left-color: #e67e22; }
+
+    .fc-year {
+      min-width: 50px;
+      font-weight: 700;
+      color: var(--reef);
+      font-size: 1rem;
+      padding-top: 0.15rem;
+    }
+
+    .fc-body {}
+
+    .fc-title {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.98rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .fc-orgs {
+      font-size: 0.88rem;
+      color: var(--ocean-mid);
+      font-style: italic;
+      margin-bottom: 0.3rem;
+    }
+
+    .fc-detail {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 10px;
+      font-weight: 700;
+      margin-right: 0.3rem;
+    }
+
+    .badge-new   { background: var(--reef); color: var(--white); }
+    .badge-intl  { background: #fdebd0; color: #9c5a00; }
+    .badge-media { background: #e8daef; color: #5b2c6f; }
+    .badge-inst  { background: #d6eaf8; color: #1a5276; }
+
+    /* ── MOBILITY ── */
+    .mobility-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .mob-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 2px 10px rgba(10,61,98,0.07);
+    }
+
+    .mob-card .flag { font-size: 1.6rem; margin-bottom: 0.5rem; }
+    .mob-card .place { font-weight: 700; color: var(--ocean); font-size: 0.95rem; }
+    .mob-card .years { font-size: 0.82rem; color: var(--reef); font-weight: 600; }
+    .mob-card .desc  { font-size: 0.84rem; color: var(--text-light); margin-top: 0.3rem; }
+
+    footer {
+      background: var(--ocean);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.82rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 700px) {
+      header { padding: 1.5rem; }
+      .stat-banner { grid-template-columns: 1fr 1fr; }
+      .mobility-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html">← Retour à la présentation</a>
+  <h1>Enseignements & Dissémination</h1>
+  <p>Cours universitaires, formations professionnelles, mobilité internationale et transfert de savoirs</p>
+</header>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html">Présentation</a>
+  <a href="recherche.html">Travaux de Recherche</a>
+  <a href="projets.html">Projets</a>
+  <a href="enseignement.html" class="active">Enseignements</a>
+</nav>
+
+<main>
+
+  <!-- STAT BANNER -->
+  <div class="stat-banner">
+    <div class="stat-box">
+      <div class="val">20+</div>
+      <div class="lbl">Cours dispensés (depuis 2005)</div>
+    </div>
+    <div class="stat-box">
+      <div class="val">800</div>
+      <div class="lbl">Étudiants max (L1 Économie)</div>
+    </div>
+    <div class="stat-box">
+      <div class="val">3</div>
+      <div class="lbl">Pays d'enseignement</div>
+    </div>
+    <div class="stat-box">
+      <div class="val">~4/an</div>
+      <div class="lbl">Mémoires de master encadrés</div>
+    </div>
+  </div>
+
+  <!-- ENSEIGNEMENTS ACTUELS -->
+  <h2 class="section-title">Enseignements actuels — Université de La Réunion</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Depuis</th>
+          <th>Discipline</th>
+          <th>Diplôme</th>
+          <th>Volume</th>
+          <th>Effectif</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2016</td>
+          <td><strong>Principes Généraux de l'Économie 1</strong></td>
+          <td><span class="level-tag lvl-l1">L1</span> Portail Économie-AES</td>
+          <td><span class="vol-badge">CM 36h</span></td>
+          <td>600–800 étudiants</td>
+        </tr>
+        <tr>
+          <td>2020</td>
+          <td><strong>Statistiques Appliquées</strong></td>
+          <td><span class="level-tag lvl-l3">L3</span> AES</td>
+          <td><span class="vol-badge">CM 24h</span></td>
+          <td>150 étudiants</td>
+        </tr>
+        <tr>
+          <td>2020</td>
+          <td><strong>Politiques publiques et environnementales</strong></td>
+          <td><span class="level-tag lvl-l2">L2</span> AES</td>
+          <td><span class="vol-badge">CM 24h</span></td>
+          <td>35 étudiants</td>
+        </tr>
+        <tr>
+          <td>2016</td>
+          <td><strong>Outils statistiques pour la gestion</strong></td>
+          <td><span class="level-tag lvl-l3">L3</span> AES (option TEG)</td>
+          <td><span class="vol-badge">CM 24h · TD 12h</span></td>
+          <td>50 étudiants</td>
+        </tr>
+        <tr>
+          <td>2016</td>
+          <td><strong>Macroéconomie appliquée</strong></td>
+          <td><span class="level-tag lvl-m2">M2</span> Économie appliquée</td>
+          <td><span class="vol-badge">CM 24h</span></td>
+          <td>10 étudiants</td>
+        </tr>
+        <tr>
+          <td>2020</td>
+          <td><strong>Développement soutenable et insularité</strong></td>
+          <td><span class="level-tag lvl-m1">M1</span> Économie appliquée</td>
+          <td><span class="vol-badge">CM 12h · TD 6h</span></td>
+          <td>30 étudiants</td>
+        </tr>
+        <tr>
+          <td>2016</td>
+          <td><strong>Atelier d'économie appliquée</strong></td>
+          <td><span class="level-tag lvl-m2">M2</span> Économie appliquée</td>
+          <td><span class="vol-badge">CM 10h</span></td>
+          <td>10 étudiants</td>
+        </tr>
+        <tr>
+          <td>2020</td>
+          <td><strong>Recherche opérationnelle</strong></td>
+          <td><span class="level-tag lvl-m2">M2</span> Économie appliquée</td>
+          <td><span class="vol-badge">CM 10h</span></td>
+          <td>10 étudiants</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ENSEIGNEMENTS PASSÉS -->
+  <h2 class="section-title">Enseignements antérieurs</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Période</th>
+          <th>Université</th>
+          <th>Discipline</th>
+          <th>Diplôme</th>
+          <th>Volume</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2016–2020</td>
+          <td>Université de La Réunion</td>
+          <td><strong>Principe et analyse du développement humain</strong></td>
+          <td><span class="level-tag lvl-m1">M1</span> Économie appliquée</td>
+          <td><span class="vol-badge">CM 24h</span></td>
+        </tr>
+        <tr>
+          <td>2014–2017</td>
+          <td>Université de La Réunion</td>
+          <td><strong>Évaluation économique et spatiale de l'environnement et des risques</strong></td>
+          <td><span class="level-tag lvl-m2">M2</span> Ressources & Risques Naturels Tropicaux</td>
+          <td><span class="vol-badge">CM 25h</span></td>
+        </tr>
+        <tr>
+          <td>2013–2020</td>
+          <td>Université de La Réunion</td>
+          <td><strong>Optimisation pour l'entreprise</strong></td>
+          <td><span class="level-tag lvl-m2">M2</span> Économie appliquée</td>
+          <td><span class="vol-badge">CM 10h</span></td>
+        </tr>
+        <tr>
+          <td>2010–2015</td>
+          <td>Université de La Réunion</td>
+          <td><strong>Développement durable et gouvernance</strong></td>
+          <td><span class="level-tag lvl-m1">M1</span> DDAT</td>
+          <td><span class="vol-badge">CM 24h</span></td>
+        </tr>
+        <tr>
+          <td>2009–2010</td>
+          <td>Université de La Réunion</td>
+          <td><strong>Séminaire de recherche : modélisation</strong></td>
+          <td><span class="level-tag lvl-m1">M1</span> Économie</td>
+          <td><span class="vol-badge">CM 10h</span></td>
+        </tr>
+        <tr>
+          <td>2008–2015</td>
+          <td>Université de La Réunion</td>
+          <td><strong>Modélisation économique</strong></td>
+          <td><span class="level-tag lvl-m1">M1</span> Économie</td>
+          <td><span class="vol-badge">CM 30h</span></td>
+        </tr>
+        <tr>
+          <td>2008–2015</td>
+          <td>Université de La Réunion</td>
+          <td><strong>Santé, Population, Éducation et Développement</strong></td>
+          <td><span class="level-tag lvl-m1">M1</span> DDAT</td>
+          <td><span class="vol-badge">CM 24h</span></td>
+        </tr>
+        <tr>
+          <td>2008–2015</td>
+          <td>Université de La Réunion</td>
+          <td><strong>Statistiques appliquées</strong></td>
+          <td><span class="level-tag lvl-l3">L3</span> AES</td>
+          <td><span class="vol-badge">CM 32h · TD 18h</span></td>
+        </tr>
+        <tr>
+          <td>2008–2015</td>
+          <td>Université de La Réunion</td>
+          <td><strong>Économie Politique 2 (microéconomie)</strong></td>
+          <td><span class="level-tag lvl-l1">L1</span> AES</td>
+          <td><span class="vol-badge">CM 36h · TD 12h</span></td>
+        </tr>
+        <tr>
+          <td>2008–2009</td>
+          <td>Université de La Réunion</td>
+          <td><strong>Économie de l'incertain</strong></td>
+          <td><span class="level-tag lvl-m1">M1</span> Économie</td>
+          <td><span class="vol-badge">TD 18h</span></td>
+        </tr>
+        <tr>
+          <td>2009–2012</td>
+          <td>Centre universitaire de Mayotte</td>
+          <td><strong>Microéconomie</strong></td>
+          <td><span class="level-tag lvl-l1">L1</span> AES</td>
+          <td><span class="vol-badge">CM 30h</span></td>
+        </tr>
+        <tr>
+          <td>2005–2008</td>
+          <td>Université de Nice Sophia-Antipolis</td>
+          <td><strong>Économie industrielle</strong></td>
+          <td><span class="level-tag lvl-l3">L3</span> MASS</td>
+          <td><span class="vol-badge">CM 24h · TD 12h</span></td>
+        </tr>
+        <tr>
+          <td>2005–2008</td>
+          <td>Université de Nice Sophia-Antipolis</td>
+          <td><strong>Microéconomie</strong></td>
+          <td><span class="level-tag lvl-l1">L1</span> Économie et Gestion</td>
+          <td><span class="vol-badge">TD 12h (3 groupes)</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MOBILITÉ INTERNATIONALE -->
+  <h2 class="section-title">Mobilité internationale d'enseignement</h2>
+
+  <div class="mobility-grid">
+    <div class="mob-card">
+      <div class="flag">🇲🇬</div>
+      <div class="place">Université Catholique de Madagascar</div>
+      <div class="years">2015–2018</div>
+      <div class="desc">Cours de macroéconomie approfondie (M2 Économie, 25h · 50 étudiants) · Séminaire de recherche, école doctorale</div>
+    </div>
+    <div class="mob-card">
+      <div class="flag">🇰🇲</div>
+      <div class="place">Université des Comores</div>
+      <div class="years">2013</div>
+      <div class="desc">Formation à la recherche scientifique (Masters et titulaires, 15h · 2 groupes de 30 étudiants)</div>
+    </div>
+    <div class="mob-card">
+      <div class="flag">🇫🇷</div>
+      <div class="place">Centre Universitaire de Mayotte</div>
+      <div class="years">2009–2012</div>
+      <div class="desc">Cours de microéconomie (L1 AES, 30h · 50 étudiants)</div>
+    </div>
+  </div>
+
+  <!-- FORMATIONS PROFESSIONNELLES & DISSÉMINATION -->
+  <h2 class="section-title">Formations professionnelles & Dissémination</h2>
+
+  <div class="formation-list">
+
+    <div class="formation-card new-entry">
+      <div class="fc-year">2026</div>
+      <div class="fc-body">
+        <div class="fc-title">
+          <span class="badge badge-new">Nouveau</span>
+          Formation des agents d'État en « Modélisation Économique : les Modèles d'Équilibre Général Calculables »
+        </div>
+        <div class="fc-orgs">Institut National de Statistique de Madagascar (INSTAT) — Banque Mondiale</div>
+        <div class="fc-detail">Mars 2026 · Madagascar</div>
+      </div>
+    </div>
+
+    <div class="formation-card regular">
+      <div class="fc-year">2026</div>
+      <div class="fc-body">
+        <div class="fc-title">
+          <span class="badge badge-inst">Formation</span>
+          Formation des agents d'État aux outils d'évaluation des politiques publiques
+        </div>
+        <div class="fc-orgs">Banque Mondiale</div>
+        <div class="fc-detail">23–27 mars 2026</div>
+      </div>
+    </div>
+
+    <div class="formation-card regular">
+      <div class="fc-year">2026</div>
+      <div class="fc-body">
+        <div class="fc-title">
+          <span class="badge badge-media">Média</span>
+          Intervention télévisée « C pas si loin » — La filière sucrière
+        </div>
+        <div class="fc-orgs">Télévision — La Réunion</div>
+        <div class="fc-detail">11 février 2026</div>
+      </div>
+    </div>
+
+    <div class="formation-card regular">
+      <div class="fc-year">2025</div>
+      <div class="fc-body">
+        <div class="fc-title">
+          <span class="badge badge-inst">Tribune</span>
+          Tribune dans <em>Le Monde</em> — La vie chère dans les Outre-mer
+        </div>
+        <div class="fc-orgs">Journal Le Monde</div>
+        <div class="fc-detail">10 décembre 2025</div>
+      </div>
+    </div>
+
+    <div class="formation-card regular">
+      <div class="fc-year">2025</div>
+      <div class="fc-body">
+        <div class="fc-title">
+          <span class="badge badge-media">Média</span>
+          Intervention télévisée « C pas si loin » — L'autonomie alimentaire
+        </div>
+        <div class="fc-orgs">Télévision — La Réunion</div>
+        <div class="fc-detail">17 novembre 2025</div>
+      </div>
+    </div>
+
+    <div class="formation-card regular">
+      <div class="fc-year">2024</div>
+      <div class="fc-body">
+        <div class="fc-title">
+          <span class="badge badge-inst">Formation</span>
+          Formation des agents d'État à la transition écologique à La Réunion
+        </div>
+        <div class="fc-orgs">CNRS — Cycle de conférence</div>
+        <div class="fc-detail">22 mai 2024</div>
+      </div>
+    </div>
+
+    <div class="formation-card intl">
+      <div class="fc-year">2020–</div>
+      <div class="fc-body">
+        <div class="fc-title">
+          <span class="badge badge-intl">Continu</span>
+          Membre du groupe de travail — Stratégie de spécialisation intelligente (S3) de La Réunion
+        </div>
+        <div class="fc-orgs">Nexa · Région Réunion</div>
+        <div class="fc-detail">Volet « énergie renouvelable » — depuis 2020</div>
+      </div>
+    </div>
+
+    <div class="formation-card regular">
+      <div class="fc-year">2016</div>
+      <div class="fc-body">
+        <div class="fc-title">
+          <span class="badge badge-inst">Note de politique</span>
+          « Les territoires ultramarins face aux défis énergétiques »
+        </div>
+        <div class="fc-orgs">Les notes de l'ATOM (Atelier d'analyse des économies d'outre-mer)</div>
+        <div class="fc-detail">Septembre 2016</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RESPONSABILITÉS PÉDAGOGIQUES -->
+  <h2 class="section-title">Responsabilités pédagogiques</h2>
+
+  <div class="formation-list">
+    <div class="formation-card regular">
+      <div class="fc-year">2022–</div>
+      <div class="fc-body">
+        <div class="fc-title">Responsable pédagogique — Licence 1 Économie-Gestion</div>
+        <div class="fc-orgs">Université de La Réunion</div>
+      </div>
+    </div>
+    <div class="formation-card regular">
+      <div class="fc-year">2010–2021</div>
+      <div class="fc-body">
+        <div class="fc-title">Responsable pédagogique — Licence 3 Administration Économique et Sociale (AES)</div>
+        <div class="fc-orgs">Université de La Réunion</div>
+      </div>
+    </div>
+    <div class="formation-card regular">
+      <div class="fc-year">~4/an</div>
+      <div class="fc-body">
+        <div class="fc-title">Encadrement de mémoires de recherche et de stages en master</div>
+        <div class="fc-orgs">Université de La Réunion</div>
+        <div class="fc-detail">Environ 4 mémoires par an en moyenne, depuis 2008</div>
+      </div>
+    </div>
+    <div class="formation-card regular">
+      <div class="fc-year">~4/an</div>
+      <div class="fc-body">
+        <div class="fc-title">Encadrement de rapports d'expertise économique</div>
+        <div class="fc-orgs">Université de La Réunion</div>
+        <div class="fc-detail">Environ 4 rapports par an en moyenne</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Sabine Garabedian — Maître de conférences HDR — Université de La Réunion — CEMOI<br>
+  15 Avenue René Cassin, 97715 Saint-Denis Messag Cedex 9
+</footer>
+
+</body>
+</html>
