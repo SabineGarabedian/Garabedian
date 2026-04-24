@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projets — Sabine Garabedian</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ocean: #0a3d62;
+      --ocean-mid: #1a5276;
+      --reef: #1abc9c;
+      --reef-light: #a8e6cf;
+      --sand: #fdf6e3;
+      --sand-dark: #f0e6c8;
+      --text: #1a1a2e;
+      --text-light: #5a6a7a;
+      --white: #ffffff;
+      --active: #e8f8f4;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--sand);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--ocean);
+      color: var(--white);
+      padding: 2rem 4rem;
+    }
+
+    header a { color: var(--reef-light); text-decoration: none; font-size: 0.9rem; }
+    header h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; }
+
+    nav {
+      background: var(--ocean-mid);
+      display: flex;
+      border-bottom: 3px solid var(--reef);
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--white);
+      background: rgba(26,188,156,0.2);
+    }
+
+    main {
+      max-width: 980px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--ocean);
+      border-bottom: 2px solid var(--reef);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .section-title:first-child { margin-top: 0; }
+
+    /* PROJECT CARDS */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .proj-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(10,61,98,0.08);
+      border-top: 4px solid var(--reef);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .proj-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(10,61,98,0.14);
+    }
+
+    .proj-card.porteur { border-top-color: var(--reef); }
+    .proj-card.membre  { border-top-color: #3498db; }
+    .proj-card.co      { border-top-color: #e67e22; }
+
+    .proj-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .proj-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ocean);
+    }
+
+    .proj-years {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--white);
+      background: var(--ocean);
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .proj-role {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 8px;
+    }
+
+    .role-porteur { background: #d5f5e3; color: #1a7a4a; }
+    .role-membre  { background: #d6eaf8; color: #1a5276; }
+    .role-codir   { background: #fdebd0; color: #9c5a00; }
+    .role-dir     { background: #e8daef; color: #5b2c6f; }
+
+    .proj-desc {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      flex: 1;
+    }
+
+    .proj-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 8px;
+      background: var(--reef-light);
+      color: var(--ocean);
+      font-weight: 600;
+    }
+
+    .proj-link {
+      font-size: 0.82rem;
+      color: var(--ocean);
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid var(--ocean);
+      padding: 0.15rem 0.6rem;
+      border-radius: 5px;
+      transition: all 0.2s;
+    }
+
+    .proj-link:hover { background: var(--ocean); color: var(--white); }
+
+    /* THESIS SECTION */
+    .thesis-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .thesis-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.3rem 1.5rem;
+      box-shadow: 0 2px 10px rgba(10,61,98,0.07);
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .thesis-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .thesis-info {}
+
+    .thesis-name {
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .thesis-title {
+      font-style: italic;
+      color: var(--ocean-mid);
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .thesis-meta {
+      font-size: 0.84rem;
+      color: var(--text-light);
+    }
+
+    footer {
+      background: var(--ocean);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.82rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 700px) {
+      .proj-grid { grid-template-columns: 1fr; }
+      header { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">← Retour à la présentation</a>
+  <h1 style="margin-top:0.4rem;">Projets de Recherche</h1>
+  <p style="opacity:0.7;font-size:0.9rem;">Directions scientifiques, projets portés et participations</p>
+</header>
+
+<nav>
+  <a href="index.html">Présentation</a>
+  <a href="recherche.html">Travaux de Recherche</a>
+  <a href="projets.html" class="active">Projets</a>
+  <a href="enseignement.html">Enseignements</a>
+</nav>
+
+<main>
+
+  <!-- PROJETS EN COURS -->
+  <h2 class="section-title">Projets en cours</h2>
+
+  <div class="proj-grid">
+
+    <div class="proj-card porteur">
+      <div class="proj-header">
+        <div class="proj-name">BRIGES</div>
+        <span class="proj-years">2026–2034</span>
+      </div>
+      <span class="proj-role role-membre">Membre du conseil scientifique</span>
+      <p class="proj-desc">
+        Programme visant à développer les recherches pour accroître la conservation de la biodiversité et favoriser une pêche juste et durable.
+        Copiloté par le CNRS, l'Ifremer et l'IRD.
+      </p>
+      <div class="proj-footer">
+        <span class="badge">28 M€ — France 2030</span>
+      </div>
+    </div>
+
+    <div class="proj-card porteur">
+      <div class="proj-header">
+        <div class="proj-name">HydrES</div>
+        <span class="proj-years">2026–2028</span>
+      </div>
+      <span class="proj-role role-porteur">Responsable axe économique</span>
+      <p class="proj-desc">
+        Risques hydrologiques et socio-économiques liés aux pluies extrêmes à La Réunion. Projet CEMOI.
+      </p>
+      <div class="proj-footer">
+        <span class="badge">FEDER — 749 800€</span>
+      </div>
+    </div>
+
+    <div class="proj-card porteur">
+      <div class="proj-header">
+        <div class="proj-name">EXPLOI</div>
+        <span class="proj-years">2024–2027</span>
+      </div>
+      <span class="proj-role role-porteur">Porteur pour le CEMOI</span>
+      <p class="proj-desc">
+        Pollution causée par les déchets plastiques et dynamiques d'économie circulaire dans l'océan Indien. Porté par la COI, financé AFD via l'IRD.
+      </p>
+      <div class="proj-footer">
+        <span class="badge">35 000€ — Part CEMOI</span>
+      </div>
+    </div>
+
+    <div class="proj-card porteur">
+      <div class="proj-header">
+        <div class="proj-name">ACOBiom</div>
+        <span class="proj-years">2023–2026</span>
+      </div>
+      <span class="proj-role role-porteur">Porteur pour le CEMOI</span>
+      <p class="proj-desc">
+        Analyse des compromis d'usage des biomasses à l'échelle territoriale. Porté par le Cirad-Réunion, financé par l'ADEME.
+      </p>
+      <div class="proj-footer">
+        <span class="badge">ADEME — 27 000€ CEMOI</span>
+      </div>
+    </div>
+
+    <div class="proj-card membre">
+      <div class="proj-header">
+        <div class="proj-name">OMEGA</div>
+        <span class="proj-years">2022–2025</span>
+      </div>
+      <span class="proj-role role-membre">Membre</span>
+      <p class="proj-desc">
+        Construction d'un MEGC Outre-mer pour les quatre DOM. Commandé par le ministère des Outre-mer.
+      </p>
+      <div class="proj-footer">
+        <span class="badge">Ministère Outre-mer — 141 895€</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PROJETS TERMINÉS -->
+  <h2 class="section-title">Projets terminés (sélection)</h2>
+
+  <div class="proj-grid">
+
+    <div class="proj-card porteur">
+      <div class="proj-header">
+        <div class="proj-name">ReNovRisk-Impact</div>
+        <span class="proj-years">2019–2023</span>
+      </div>
+      <span class="proj-role role-porteur">Porteur de projet</span>
+      <p class="proj-desc">
+        Évaluation économique du risque cyclonique à La Réunion et à Madagascar. Équipe de 3 ingénieurs de recherche.
+      </p>
+      <div class="proj-footer">
+        <span class="badge">FEDER-Interreg — 446 220€</span>
+        <a href="https://renovrisk.univ-reunion.fr" target="_blank" class="proj-link">🔗 Site projet</a>
+      </div>
+    </div>
+
+    <div class="proj-card porteur">
+      <div class="proj-header">
+        <div class="proj-name">OSS</div>
+        <span class="proj-years">2014–2017</span>
+      </div>
+      <span class="proj-role role-porteur">Porteur de projet</span>
+      <p class="proj-desc">
+        Le rôle des clusters dans la dynamique d'innovation environnementale. Financement Région Réunion « Recherche et Innovation ».
+      </p>
+      <div class="proj-footer">
+        <span class="badge">Région Réunion — 22 648€</span>
+      </div>
+    </div>
+
+    <div class="proj-card membre">
+      <div class="proj-header">
+        <div class="proj-name">MEGC-OM</div>
+        <span class="proj-years">2011–2015</span>
+      </div>
+      <span class="proj-role role-membre">Membre</span>
+      <p class="proj-desc">
+        Élaboration d'un modèle de simulation des économies ultramarines pour le ministère de l'Intérieur/Outre-mer.
+      </p>
+      <div class="proj-footer">
+        <span class="badge">DEGEOM — 51 560€</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DIRECTIONS DE THÈSE -->
+  <h2 class="section-title">Directions de thèse</h2>
+
+  <div class="thesis-list">
+
+    <div class="thesis-card">
+      <div class="thesis-icon">🎓</div>
+      <div class="thesis-info">
+        <div class="thesis-name">Silvain Payet <span style="font-weight:normal;color:var(--text-light)">(en cours, 2022–)</span></div>
+        <div class="thesis-title">La pollution plastique dans les petites économies insulaires : modélisation et analyse environnementale et économique à La Réunion et dans l'Océan Indien</div>
+        <div class="thesis-meta">Université de La Réunion — Codirection : Hélène Maisonnave (Univ. du Havre) — Contrat régional</div>
+      </div>
+    </div>
+
+    <div class="thesis-card">
+      <div class="thesis-icon">🎓</div>
+      <div class="thesis-info">
+        <div class="thesis-name">Tsiory Maminiaina A. Ramilimanitra <span style="font-weight:normal;color:var(--text-light)">(en cours, 2022–)</span></div>
+        <div class="thesis-title">Évaluations économiques des impacts cycloniques : cas de Madagascar</div>
+        <div class="thesis-meta">Université Catholique de Madagascar — Codirection : Pierre Lazamanana (UCM) — Contrat interreg</div>
+      </div>
+    </div>
+
+    <div class="thesis-card">
+      <div class="thesis-icon">✅</div>
+      <div class="thesis-info">
+        <div class="thesis-name">Éric Kulanthaivelu <span style="font-weight:normal;color:var(--text-light)">(soutenue, 2020–2023)</span></div>
+        <div class="thesis-title">Conséquences économiques et risques sociaux associés aux passages des cyclones tropicaux : approches empiriques</div>
+        <div class="thesis-meta">Université de La Réunion — Codirection : Yves Croissant — Contrat doctoral</div>
+      </div>
+    </div>
+
+    <div class="thesis-card">
+      <div class="thesis-icon">✅</div>
+      <div class="thesis-info">
+        <div class="thesis-name">Anna Genave <span style="font-weight:normal;color:var(--text-light)">(soutenue, 2017–2022)</span></div>
+        <div class="thesis-title">Le poids des systèmes énergétiques insulaires dans la vulnérabilité énergétique</div>
+        <div class="thesis-meta">Université de La Réunion — Codirection : Alexis Parmentier — Bourse Campus France</div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  Sabine Garabedian — Maître de conférences HDR — Université de La Réunion — CEMOI
+</footer>
+
+</body>
+</html>

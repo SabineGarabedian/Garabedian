@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travaux de Recherche — Sabine Garabedian</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ocean: #0a3d62;
+      --ocean-mid: #1a5276;
+      --reef: #1abc9c;
+      --reef-light: #a8e6cf;
+      --sand: #fdf6e3;
+      --sand-dark: #f0e6c8;
+      --text: #1a1a2e;
+      --text-light: #5a6a7a;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--sand);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--ocean);
+      color: var(--white);
+      padding: 2rem 4rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    header a {
+      color: var(--reef-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+    }
+
+    nav {
+      background: var(--ocean-mid);
+      display: flex;
+      gap: 0;
+      border-bottom: 3px solid var(--reef);
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--white);
+      background: rgba(26,188,156,0.2);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    /* FILTER BAR */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+      padding: 0.4rem 1rem;
+      border: 2px solid var(--ocean);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--ocean);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--ocean);
+      color: var(--white);
+    }
+
+    /* SECTION HEADINGS */
+    .pub-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .pub-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--ocean);
+      border-left: 5px solid var(--reef);
+      padding-left: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    /* PUBLICATION CARD */
+    .pub-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 10px rgba(10,61,98,0.07);
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .pub-card:hover {
+      box-shadow: 0 6px 20px rgba(10,61,98,0.14);
+      transform: translateY(-2px);
+    }
+
+    .pub-year {
+      min-width: 48px;
+      font-weight: 700;
+      color: var(--reef);
+      font-size: 1rem;
+      padding-top: 0.1rem;
+    }
+
+    .pub-body {}
+
+    .pub-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .pub-authors {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      margin-bottom: 0.3rem;
+    }
+
+    .pub-authors strong { color: var(--ocean); }
+
+    .pub-journal {
+      font-style: italic;
+      color: var(--ocean-mid);
+      font-size: 0.88rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .pub-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
+    .badge-cnu-a { background: #d5f5e3; color: #1a7a4a; }
+    .badge-cnu-b { background: #d6eaf8; color: #1a5276; }
+    .badge-cnu-c { background: #fdebd0; color: #9c5a00; }
+    .badge-nc    { background: #e8daef; color: #5b2c6f; }
+    .badge-if    { background: var(--reef-light); color: var(--ocean); }
+    .badge-new   { background: var(--reef); color: var(--white); }
+
+    .pub-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ocean);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      border: 1px solid var(--ocean);
+      border-radius: 5px;
+      padding: 0.15rem 0.6rem;
+      transition: all 0.2s;
+    }
+
+    .pub-link:hover {
+      background: var(--ocean);
+      color: var(--white);
+    }
+
+    .pub-link-placeholder {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      font-style: italic;
+    }
+
+    footer {
+      background: var(--ocean);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.82rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+      .pub-card { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <a href="index.html">← Retour à la présentation</a>
+    <h1 style="margin-top:0.4rem;">Travaux de Recherche</h1>
+    <p style="opacity:0.7;font-size:0.9rem;">Sabine Garabedian — Maître de conférences HDR, Université de La Réunion</p>
+  </div>
+</header>
+
+<nav>
+  <a href="index.html">Présentation</a>
+  <a href="recherche.html" class="active">Travaux de Recherche</a>
+  <a href="projets.html">Projets</a>
+  <a href="enseignement.html">Enseignements</a>
+</nav>
+
+<main>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterPubs('all', this)">Tout afficher</button>
+    <button class="filter-btn" onclick="filterPubs('cnu-a', this)">CNU : A</button>
+    <button class="filter-btn" onclick="filterPubs('energy', this)">Énergie</button>
+    <button class="filter-btn" onclick="filterPubs('cyclone', this)">Risque cyclonique</button>
+    <button class="filter-btn" onclick="filterPubs('plastic', this)">Plastique / Environnement</button>
+    <button class="filter-btn" onclick="filterPubs('megc', this)">MEGC</button>
+  </div>
+
+  <!-- REVUES À COMITÉ DE LECTURE -->
+  <div class="pub-section">
+    <h2>Publications dans des revues à comité de lecture</h2>
+
+    <div class="pub-card" data-tags="cyclone nc">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-title">Assessment of cyclone risk in Madagascar: Multi-layer benefit-of-doubt approach</div>
+        <div class="pub-authors">Ramilimanitra T., <strong>Garabedian S.</strong></div>
+        <div class="pub-journal">Natural Hazard</div>
+        <div class="pub-meta">
+          <span class="badge badge-new">À paraître</span>
+          <span class="badge badge-nc">NC</span>
+          <span class="badge badge-if">IF : 3,7</span>
+          <span class="pub-link-placeholder">🔗 Lien à ajouter à parution</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card" data-tags="plastic cnu-a">
+      <div class="pub-year">2025</div>
+      <div class="pub-body">
+        <div class="pub-title">Assessing plastic uses and waste through an environmentally extended SAM‑based and structural path analysis: The case of Côte d'Ivoire</div>
+        <div class="pub-authors">Guillotreau P., Diallo S. S., Dissou Y., <strong>Garabedian S.</strong>, Ouattara A., Payet S., Cecchi P.</div>
+        <div class="pub-journal">Journal of Industrial Ecology, vol. 29, no 5, p. 1806–1820</div>
+        <div class="pub-meta">
+          <span class="badge badge-nc">NC</span>
+          <span class="badge badge-if">IF : 5,4</span>
+          <a href="https://doi.org/10.1111/jiec.13576" target="_blank" class="pub-link">📄 DOI</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card" data-tags="cyclone cnu-a">
+      <div class="pub-year">2024</div>
+      <div class="pub-body">
+        <div class="pub-title">Tropical Cyclones and Fertility: New Evidence from developing countries</div>
+        <div class="pub-authors">Fontaine I., <strong>Garabedian S.</strong>, Vérèmes H.</div>
+        <div class="pub-journal">Ecological Economics, vol. 226, p. 108341</div>
+        <div class="pub-meta">
+          <span class="badge badge-cnu-a">CNU : A</span>
+          <a href="https://doi.org/10.1016/j.ecolecon.2024.108341" target="_blank" class="pub-link">📄 DOI</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card" data-tags="cyclone cnu-a">
+      <div class="pub-year">2024</div>
+      <div class="pub-body">
+        <div class="pub-title">The current and future costs of tropical cyclones: a case study of La Réunion</div>
+        <div class="pub-authors">Fontaine I., <strong>Garabedian S.</strong>, Vérèmes H.</div>
+        <div class="pub-journal">Revue Économique, vol. 74, no 3, p. 597–621</div>
+        <div class="pub-meta">
+          <span class="badge badge-cnu-a">CNU : A</span>
+          <a href="https://doi.org/10.3917/reco.743.0597" target="_blank" class="pub-link">📄 DOI</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card" data-tags="cyclone cnu-a">
+      <div class="pub-year">2023</div>
+      <div class="pub-body">
+        <div class="pub-title">The short term impact of tropical cyclones in Madagascar: Evidence from night light data</div>
+        <div class="pub-authors">Fontaine I., <strong>Garabedian S.</strong>, Jammes M.</div>
+        <div class="pub-journal">Applied Economics, pp. 1–22</div>
+        <div class="pub-meta">
+          <span class="badge badge-cnu-a">CNU : A</span>
+          <a href="https://doi.org/10.1080/00036846.2023.2193959" target="_blank" class="pub-link">📄 DOI</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card" data-tags="cyclone nc">
+      <div class="pub-year">2021</div>
+      <div class="pub-body">
+        <div class="pub-title">ReNovRisk: a multidisciplinary program to study the cyclonic risks in the South West Indian Ocean</div>
+        <div class="pub-authors">Tullet P., et al. (dont <strong>Garabedian S.</strong>)</div>
+        <div class="pub-journal">Natural Hazards, Springer Verlag</div>
+        <div class="pub-meta">
+          <span class="badge badge-nc">NC</span>
+          <span class="badge badge-if">IF : 3,7</span>
+          <span class="pub-link-placeholder">🔗 Lien à ajouter</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card" data-tags="energy megc cnu-a">
+      <div class="pub-year">2020</div>
+      <div class="pub-body">
+        <div class="pub-title">A macroeconomic evaluation of a carbon tax in overseas territories: a CGE model for Reunion Island</div>
+        <div class="pub-authors"><strong>Garabedian S.</strong>, Narindranjanahary A., Ricci O., Selosse S.</div>
+        <div class="pub-journal">Energy Policy, no 147, 111738</div>
+        <div class="pub-meta">
+          <span class="badge badge-cnu-a">CNU : A</span>
+          <a href="https://doi.org/10.1016/j.enpol.2020.111738" target="_blank" class="pub-link">📄 DOI</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card" data-tags="energy cnu-a">
+      <div class="pub-year">2020</div>
+      <div class="pub-body">
+        <div class="pub-title">An assessment of energy vulnerability in Small Island Developing States</div>
+        <div class="pub-authors">Genave A., Blancard S., <strong>Garabedian S.</strong></div>
+        <div class="pub-journal">Ecological Economics, vol. 171, 106595</div>
+        <div class="pub-meta">
+          <span class="badge badge-cnu-a">CNU : A</span>
+          <a href="https://doi.org/10.1016/j.ecolecon.2020.106595" target="_blank" class="pub-link">📄 DOI</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card" data-tags="megc cnu-a">
+      <div class="pub-year">2019</div>
+      <div class="pub-body">
+        <div class="pub-title">Fragmentation mondiale de la production et différenciation de la demande dans un MEGC : proposition méthodologique</div>
+        <div class="pub-authors">Croissant Y., <strong>Garabedian S.</strong>, Mehoumoud Issop Z., Hermet F.</div>
+        <div class="pub-journal">Revue Économique, vol. 71, no 4, p. 597–621</div>
+        <div class="pub-meta">
+          <span class="badge badge-cnu-a">CNU : A</span>
+          <span class="pub-link-placeholder">🔗 Lien à ajouter</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card" data-tags="energy cnu-c">
+      <div class="pub-year">2018</div>
+      <div class="pub-body">
+        <div class="pub-title">Exploring sustainable energy future in Reunion Island</div>
+        <div class="pub-authors">Selosse S., Ricci O., <strong>Garabedian S.</strong>, Maïzi N.</div>
+        <div class="pub-journal">Utilities Policy, vol. 55, pp. 158–166</div>
+        <div class="pub-meta">
+          <span class="badge badge-cnu-c">CNU : C</span>
+          <a href="https://doi.org/10.1016/j.jup.2018.09.004" target="_blank" class="pub-link">📄 DOI</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card" data-tags="energy nc">
+      <div class="pub-year">2018</div>
+      <div class="pub-body">
+        <div class="pub-title">The renewable energy revolution of Reunion Island</div>
+        <div class="pub-authors">Selosse S., <strong>Garabedian S.</strong>, Ricci O., Maïzi N.</div>
+        <div class="pub-journal">Renewable and Sustainable Energy Reviews, vol. 89, pp. 99–105</div>
+        <div class="pub-meta">
+          <span class="badge badge-nc">NC</span>
+          <span class="badge badge-if">IF : 12,11</span>
+          <a href="https://doi.org/10.1016/j.rser.2018.03.013" target="_blank" class="pub-link">📄 DOI</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card" data-tags="cnu-b">
+      <div class="pub-year">2011</div>
+      <div class="pub-body">
+        <div class="pub-title">Un indicateur de développement humain soutenable pour les petits espaces insulaires en développement</div>
+        <div class="pub-authors"><strong>Garabedian S.</strong>, Hoarau J.F.</div>
+        <div class="pub-journal">Revue d'Économie Régionale & Urbaine, vol. 4, pp. 651–680</div>
+        <div class="pub-meta">
+          <span class="badge badge-cnu-b">CNU : B</span>
+          <span class="pub-link-placeholder">🔗 Lien à ajouter</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CHAPITRES D'OUVRAGE -->
+  <div class="pub-section">
+    <h2>Chapitres d'ouvrages</h2>
+
+    <div class="pub-card" data-tags="megc energy">
+      <div class="pub-year">2016</div>
+      <div class="pub-body">
+        <div class="pub-title">Exonération de taxes, tourisme et création de richesse : une analyse dans le cadre d'un MECG pour La Réunion</div>
+        <div class="pub-authors"><strong>Garabedian S.</strong></div>
+        <div class="pub-journal">in Hoarau, <em>Spécialisation touristique et vulnérabilité</em>, L'Harmattan, Paris, pp. 301–326</div>
+        <div class="pub-meta">
+          <span class="pub-link-placeholder">🔗 Lien à ajouter</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card" data-tags="">
+      <div class="pub-year">2011</div>
+      <div class="pub-body">
+        <div class="pub-title">Un indicateur de développement humain soutenable pour les petits espaces insulaires en développement</div>
+        <div class="pub-authors"><strong>Garabedian S.</strong>, Hoarau J.F.</div>
+        <div class="pub-journal">in Taglioni, <em>Insularité et développement durable</em>, IRD Editions, collection « Objectifs Suds »</div>
+        <div class="pub-meta">
+          <span class="pub-link-placeholder">🔗 Lien à ajouter</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card" data-tags="">
+      <div class="pub-year">2008</div>
+      <div class="pub-body">
+        <div class="pub-title">Multidimensional Evolving Opinion for Sustainable Consumption Decision</div>
+        <div class="pub-authors"><strong>Garabedian S.</strong></div>
+        <div class="pub-journal">in Schredelseker, Hauser (eds), <em>Complexity and Artificial Markets</em>, Lecture Notes in Economics vol. 614, Springer</div>
+        <div class="pub-meta">
+          <a href="https://doi.org/10.1007/978-3-540-70556-7_7" target="_blank" class="pub-link">📄 DOI</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-card" data-tags="">
+      <div class="pub-year">2007</div>
+      <div class="pub-body">
+        <div class="pub-title">Une analyse de la consommation éthique : le rôle de l'information et de l'accessibilité</div>
+        <div class="pub-authors"><strong>Garabedian S.</strong></div>
+        <div class="pub-journal">Economie Rurale, vol. 301, pp. 55–74</div>
+        <div class="pub-meta">
+          <span class="pub-link-placeholder">🔗 Lien à ajouter</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SOUMIS EN COURS -->
+  <div class="pub-section">
+    <h2>Articles soumis / en cours de publication</h2>
+
+    <div class="pub-card" data-tags="cyclone megc cnu-a">
+      <div class="pub-year">2022</div>
+      <div class="pub-body">
+        <div class="pub-title">Effets économiques d'un choc spatialisé et évaluation des politiques de compensation : le cas d'un MEGC appliqué au cyclone tropical Dina à La Réunion</div>
+        <div class="pub-authors">Mamboundou P., <strong>Garabedian S.</strong>, Fontaine I.</div>
+        <div class="pub-journal">En cours de soumission — Revue Économique</div>
+        <div class="pub-meta">
+          <span class="badge badge-cnu-a">CNU : A (cible)</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  Sabine Garabedian — Maître de conférences HDR — Université de La Réunion — CEMOI
+</footer>
+
+<script>
+  function filterPubs(tag, btn) {
+    // Update active button
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const cards = document.querySelectorAll('.pub-card');
+    cards.forEach(card => {
+      if (tag === 'all') {
+        card.style.display = 'flex';
+      } else {
+        const tags = card.dataset.tags || '';
+        card.style.display = tags.includes(tag) ? 'flex' : 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
