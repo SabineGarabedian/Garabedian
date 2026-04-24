@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projet ACOBiom — Sabine Garabedian</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ocean: #0a3d62;
+      --ocean-mid: #1a5276;
+      --reef: #1abc9c;
+      --sand: #fdf6e3;
+      --text: #1a1a2e;
+      --text-light: #5a6a7a;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--sand);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--ocean);
+      color: var(--white);
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+
+    h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 0.5rem; }
+
+    .container {
+      max-width: 900px;
+      margin: -2rem auto 4rem auto;
+      background: var(--white);
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .project-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      background: #f9fbfd;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 5px solid var(--reef);
+      margin-bottom: 2rem;
+    }
+
+    .meta-item strong { color: var(--ocean); display: block; font-size: 0.9rem; text-transform: uppercase; }
+
+    h2 { font-family: 'Playfair Display', serif; color: var(--ocean); margin: 2rem 0 1rem 0; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+
+    p { margin-bottom: 1.2rem; text-align: justify; }
+
+    .concept-box {
+      background: #fcf8e3;
+      border: 1px solid #faebcc;
+      padding: 1.2rem;
+      border-radius: 6px;
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+
+    .btn-back {
+      display: inline-block;
+      margin-top: 2rem;
+      color: var(--ocean);
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-back:hover { color: var(--reef); transform: translateX(-5px); }
+
+    footer { text-align: center; padding: 2rem; color: var(--text-light); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Projet ACOBiom</h1>
+  <p>Analyse des compromis d'usage des biomasses à l'échelle territoriale</p>
+</header>
+
+<main class="container">
+  <div class="project-meta">
+    <div class="meta-item">
+      <strong>Période</strong>
+      2023 — 2026
+    </div>
+    <div class="meta-item">
+      <strong>Financement</strong>
+      ADEME
+    </div>
+    <div class="meta-item">
+      <strong>Partenaires</strong>
+      CIRAD-Réunion, CEMOI, QualiSud
+    </div>
+  </div>
+
+  <h2>Contexte et Enjeux</h2>
+  <p>
+    Le projet <strong>ACOBiom</strong> s'inscrit dans une démarche de transition écologique pour les territoires insulaires. Il s'attaque à une question complexe : comment arbitrer entre les différents usages possibles des biomasses locales (canne à sucre, effluents d'élevage, biodéchets) ? 
+  </p>
+  <p>
+    Ces ressources sont en effet convoitées pour plusieurs finalités : la production d'énergie, l'alimentation animale, ou encore l'amendement organique des sols. L'objectif est d'aider les décideurs à identifier les compromis les plus durables pour le territoire.
+  </p>
+
+  <div class="concept-box">
+    "Le projet s'appuie sur une approche pluridisciplinaire et participative via la mise en place d'un 'Laboratoire vivant' (Living Lab)."
+  </div>
+
+  <h2>Méthodologie et Apports de l'Économie</h2>
+  <p>
+    L'implication du <strong>CEMOI</strong> dans ce projet consiste à évaluer les scénarios de bio-économie circulaire. Nous analysons les flux de ressources et les impacts socio-économiques des différentes stratégies de valorisation.
+  </p>
+  <p>
+    En combinant des analyses techniques (CIRAD) et économiques, ACOBiom permet de modéliser les conséquences de choix de politiques publiques sur l'autonomie énergétique et alimentaire de l'île, tout en préservant les écosystèmes.
+  </p>
+
+  <a href="projets.html" class="btn-back">← Retour à la liste des projets</a>
+</main>
+
+<footer>
+  Sabine Garabedian — Université de La Réunion — CEMOI
+</footer>
+
+</body>
+</html>
