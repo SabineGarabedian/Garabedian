@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sabine Garabedian — Maître de conférences HDR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ocean: #0a3d62;
+      --ocean-mid: #1a5276;
+      --reef: #1abc9c;
+      --reef-light: #a8e6cf;
+      --sand: #fdf6e3;
+      --sand-dark: #f0e6c8;
+      --text: #1a1a2e;
+      --text-light: #5a6a7a;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--sand);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ─── HEADER ─────────────────────────────── */
+    header {
+      background: var(--ocean);
+      color: var(--white);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-wave {
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 60px;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      padding: 3rem 4rem 4.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .avatar {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: var(--reef);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--white);
+      flex-shrink: 0;
+      border: 4px solid rgba(255,255,255,0.25);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .header-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.25rem;
+    }
+
+    .header-text .title {
+      font-size: 1.05rem;
+      font-weight: 300;
+      opacity: 0.85;
+      margin-bottom: 0.6rem;
+    }
+
+    .header-text .contact-row {
+      display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+      font-size: 0.88rem;
+      opacity: 0.75;
+    }
+
+    .header-text .contact-row a {
+      color: var(--reef-light);
+      text-decoration: none;
+    }
+
+    /* ─── NAV ─────────────────────────────────── */
+    nav {
+      background: var(--ocean-mid);
+      display: flex;
+      gap: 0;
+      border-bottom: 3px solid var(--reef);
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--white);
+      background: rgba(26,188,156,0.2);
+    }
+
+    /* ─── MAIN LAYOUT ─────────────────────────── */
+    main {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2.5rem;
+    }
+
+    /* ─── SECTIONS ────────────────────────────── */
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--ocean);
+      border-bottom: 2px solid var(--reef);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ─── INTRO CARD ──────────────────────────── */
+    .intro-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.8rem;
+      box-shadow: 0 2px 16px rgba(10,61,98,0.08);
+      margin-bottom: 2rem;
+      border-left: 5px solid var(--reef);
+    }
+
+    .intro-card p {
+      color: var(--text-light);
+      font-size: 1.02rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .intro-card p:last-child { margin-bottom: 0; }
+
+    .keywords {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .kw {
+      background: var(--ocean);
+      color: var(--white);
+      font-size: 0.78rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── CTA CARDS ───────────────────────────── */
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-card {
+      border-radius: 14px;
+      padding: 2rem 1.5rem;
+      text-decoration: none;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .cta-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+    }
+
+    .cta-card.research {
+      background: linear-gradient(135deg, var(--ocean), var(--ocean-mid));
+    }
+
+    .cta-card.projects {
+      background: linear-gradient(135deg, #1a7a4a, #16a085);
+    }
+
+    .cta-card .icon {
+      font-size: 2.2rem;
+    }
+
+    .cta-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .cta-card p {
+      font-size: 0.88rem;
+      opacity: 0.85;
+    }
+
+    .cta-card .arrow {
+      margin-top: auto;
+      font-size: 1.4rem;
+      opacity: 0.6;
+    }
+
+    /* ─── SIDEBAR ─────────────────────────────── */
+    .sidebar {}
+
+    .sidebar-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 16px rgba(10,61,98,0.08);
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--ocean);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--sand-dark);
+      padding-bottom: 0.5rem;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--sand-dark);
+      font-size: 0.9rem;
+    }
+
+    .stat-row:last-child { border-bottom: none; }
+
+    .stat-val {
+      font-weight: 700;
+      color: var(--ocean);
+      font-size: 1.1rem;
+    }
+
+    .recent-pub {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+
+    .pub-mini {
+      font-size: 0.84rem;
+      color: var(--text-light);
+      padding-left: 0.8rem;
+      border-left: 3px solid var(--reef);
+    }
+
+    .pub-mini strong { color: var(--text); display: block; margin-bottom: 0.15rem; }
+
+    .pub-mini .journal {
+      font-style: italic;
+      color: var(--ocean);
+    }
+
+    .project-mini {
+      display: flex; flex-direction: column; gap: 0.8rem;
+    }
+
+    .proj-item {
+      font-size: 0.84rem;
+    }
+
+    .proj-item .proj-name {
+      font-weight: 700;
+      color: var(--ocean);
+    }
+
+    .proj-item .proj-desc {
+      color: var(--text-light);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 10px;
+      background: var(--reef-light);
+      color: var(--ocean);
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    /* ─── PARCOURS ────────────────────────────── */
+    .timeline {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+
+    .tl-item {
+      display: flex; gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .tl-year {
+      min-width: 60px;
+      font-weight: 700;
+      color: var(--reef);
+      font-size: 0.9rem;
+      padding-top: 0.15rem;
+    }
+
+    .tl-content {
+      font-size: 0.92rem;
+      color: var(--text-light);
+    }
+
+    .tl-content strong { color: var(--text); }
+
+    /* ─── FOOTER ──────────────────────────────── */
+    footer {
+      background: var(--ocean);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.82rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .header-inner { flex-direction: column; padding: 2rem; }
+      main { grid-template-columns: 1fr; }
+      .cta-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="avatar">SG</div>
+    <div class="header-text">
+      <h1>Sabine Garabedian</h1>
+      <p class="title">Maître de conférences HDR en Sciences Économiques &mdash; Université de La Réunion</p>
+      <div class="contact-row">
+        <span>📧 <a href="mailto:sgarabed@univ-reunion.fr">sgarabed@univ-reunion.fr</a></span>
+        <span>📞 02 62 93 84 52</span>
+        <span>🏛️ CEMOI — UFR Droit & Économie</span>
+      </div>
+    </div>
+  </div>
+  <svg class="header-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#fdf6e3"/>
+  </svg>
+</header>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="active">Présentation</a>
+  <a href="recherche.html">Travaux de Recherche</a>
+  <a href="projets.html">Projets</a>
+  <a href="enseignement.html">Enseignements</a>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main>
+
+  <!-- LEFT COLUMN -->
+  <div>
+
+    <!-- INTRO -->
+    <div class="section">
+      <div class="intro-card">
+        <p>
+          Économiste spécialisée dans l'étude des <strong>petites économies insulaires</strong>, 
+          je suis Maître de conférences Hors-Classe au département d'Économie de l'Université de La Réunion 
+          et membre du laboratoire CEMOI.
+        </p>
+        <p>
+          Mes recherches portent principalement sur l'<strong>économie de l'environnement</strong>, 
+          la <strong>transition énergétique</strong>, l'<strong>évaluation des risques naturels</strong> 
+          (cyclones tropicaux) et les <strong>modèles d'équilibre général calculable (MEGC)</strong>, 
+          appliqués aux territoires insulaires de l'océan Indien.
+        </p>
+        <p>
+          Titulaire d'une HDR (2021), je dirige des thèses et porte plusieurs projets de recherche 
+          financés à l'échelle nationale et internationale.
+        </p>
+        <div class="keywords">
+          <span class="kw">Économie de l'environnement</span>
+          <span class="kw">Risques cycloniques</span>
+          <span class="kw">Transition énergétique</span>
+          <span class="kw">MEGC</span>
+          <span class="kw">Petites économies insulaires</span>
+          <span class="kw">Océan Indien</span>
+          <span class="kw">Politique environnementale</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA CARDS -->
+    <div class="cta-grid">
+      <a href="recherche.html" class="cta-card research">
+        <div class="icon">📄</div>
+        <h3>Travaux de Recherche</h3>
+        <p>Publications dans des revues internationales, chapitres d'ouvrages, documents de travail.</p>
+        <div class="arrow">→</div>
+      </a>
+      <a href="projets.html" class="cta-card projects">
+        <div class="icon">🔬</div>
+        <h3>Projets</h3>
+        <p>Projets financés, directions scientifiques, et collaborations nationales et internationales.</p>
+        <div class="arrow">→</div>
+      </a>
+    </div>
+
+    <!-- PARCOURS -->
+    <div class="section">
+      <h2>Parcours académique</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2021</div>
+          <div class="tl-content">
+            <strong>Habilitation à Diriger des Recherches (HDR)</strong> — Université de La Réunion, CEMOI<br>
+            <em>« La vulnérabilité des petites économies insulaires : les apports de la méthodologie »</em>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2021</div>
+          <div class="tl-content"><strong>Promotion Hors-Classe</strong>, section 05 du CNU</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2008</div>
+          <div class="tl-content">
+            <strong>Maître de conférences</strong> — UFR Droit et Économie, Université de La Réunion
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2007</div>
+          <div class="tl-content">
+            <strong>Doctorat en Sciences Économiques</strong> — GREDEG, Université de Nice Sophia-Antipolis<br>
+            <em>Mention Très Honorable</em>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2003</div>
+          <div class="tl-content">
+            <strong>DEA Organisation Industrielle</strong> (GREDEG, Nice) et 
+            <strong>DEA Industrie et Organisation Spatiale</strong> (CRERI, Toulon)
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- STATS -->
+    <div class="sidebar-card">
+      <h3>En chiffres</h3>
+      <div class="stat-row">
+        <span>Publications revues à comité</span>
+        <span class="stat-val">14</span>
+      </div>
+      <div class="stat-row">
+        <span>Chapitres d'ouvrages</span>
+        <span class="stat-val">4</span>
+      </div>
+      <div class="stat-row">
+        <span>Projets portés / membres</span>
+        <span class="stat-val">8+</span>
+      </div>
+      <div class="stat-row">
+        <span>Thèses dirigées (en cours)</span>
+        <span class="stat-val">3</span>
+      </div>
+      <div class="stat-row">
+        <span>Budget projets gérés</span>
+        <span class="stat-val">~650k€</span>
+      </div>
+    </div>
+
+    <!-- RECENT PUBS -->
+    <div class="sidebar-card">
+      <h3>Publications récentes</h3>
+      <div class="recent-pub">
+        <div class="pub-mini">
+          <strong>Cyclone risk assessment in Madagascar</strong>
+          <span class="journal">Natural Hazard</span> — 2026 (à paraître)
+        </div>
+        <div class="pub-mini">
+          <strong>Plastic uses and waste — Côte d'Ivoire</strong>
+          <span class="journal">Journal of Industrial Ecology</span> — 2025
+        </div>
+        <div class="pub-mini">
+          <strong>Tropical Cyclones and Fertility</strong>
+          <span class="journal">Ecological Economics</span> — 2024
+        </div>
+        <div class="pub-mini">
+          <strong>Costs of tropical cyclones — La Réunion</strong>
+          <span class="journal">Revue Économique</span> — 2024
+        </div>
+      </div>
+      <a href="recherche.html" style="display:inline-block;margin-top:1rem;color:var(--ocean);font-size:0.85rem;font-weight:600;text-decoration:none;">Voir toutes les publications →</a>
+    </div>
+
+    <!-- PROJETS EN COURS -->
+    <div class="sidebar-card">
+      <h3>Projets actifs</h3>
+      <div class="project-mini">
+        <div class="proj-item">
+          <div class="proj-name">BRIGES (2026–2034)</div>
+          <div class="proj-desc">Biodiversité & pêche durable — CNRS/Ifremer/IRD</div>
+          <span class="badge">28M€ — France 2030</span>
+        </div>
+        <div class="proj-item">
+          <div class="proj-name">HydrES (2026–2028)</div>
+          <div class="proj-desc">Risques hydrologiques et pluies extrêmes à La Réunion</div>
+          <span class="badge">FEDER 749 800€</span>
+        </div>
+        <div class="proj-item">
+          <div class="proj-name">EXPLOI (2024–2027)</div>
+          <div class="proj-desc">Déchets plastiques & économie circulaire — Océan Indien</div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-name">OMEGA (2022–2025)</div>
+          <div class="proj-desc">MEGC pour les quatre DOM — Ministère Outre-mer</div>
+        </div>
+      </div>
+      <a href="projets.html" style="display:inline-block;margin-top:1rem;color:var(--ocean);font-size:0.85rem;font-weight:600;text-decoration:none;">Voir tous les projets →</a>
+    </div>
+
+    <!-- AFFILIATIONS -->
+    <div class="sidebar-card">
+      <h3>Affiliations</h3>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-content" style="font-size:0.84rem;">
+            🏛️ <strong>CEMOI</strong> — Université de La Réunion (membre actif, responsable axe 1)
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-content" style="font-size:0.84rem;">
+            📊 <strong>TEPP</strong> — Fédération Travail, Emploi, Politiques Publiques
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-content" style="font-size:0.84rem;">
+            🌊 <strong>ATOM</strong> — Atelier d'analyse des économies d'outre-mer
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-content" style="font-size:0.84rem;">
+            🎓 <strong>Chaire Outre-mer</strong> — Sciences Po (comité scientifique, 2021–)
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+</main>
+
+<footer>
+  Sabine Garabedian — Maître de conférences HDR — Université de La Réunion — CEMOI<br>
+  15 Avenue René Cassin, 97715 Saint-Denis Messag Cedex 9
+</footer>
+
+</body>
+</html>
