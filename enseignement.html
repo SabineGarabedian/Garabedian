@@ -3,42 +3,122 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Enseignements — Sabine Garabedian</title>
+  <title>Enseignements & Formation — Sabine Garabedian</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --ocean: #0a3d62;
       --ocean-mid: #1a5276;
       --reef: #1abc9c;
+      --reef-light: #a8e6cf;
       --sand: #fdf6e3;
+      --sand-dark: #f0e6c8;
       --text: #1a1a2e;
       --text-light: #5a6a7a;
       --white: #ffffff;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Source Sans 3', sans-serif; background: var(--sand); color: var(--text); line-height: 1.7; }
 
-    header { background: var(--ocean); color: var(--white); padding: 2.5rem 2rem; text-align: center; position: relative; }
-    header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem; }
-    header a { color: var(--reef); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--sand);
+      color: var(--text);
+      line-height: 1.7;
+    }
 
-    nav { background: var(--ocean-mid); display: flex; justify-content: center; border-bottom: 3px solid var(--reef); }
-    nav a { color: rgba(255,255,255,0.8); text-decoration: none; padding: 0.8rem 1.5rem; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; }
-    nav a.active { color: var(--white); background: rgba(26,188,156,0.2); }
+    header {
+      background: var(--ocean);
+      color: var(--white);
+      padding: 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
 
-    main { max-width: 900px; margin: 3rem auto; padding: 0 2rem; }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 40px;
+      background: var(--sand);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    header a { color: var(--reef-light); text-decoration: none; font-size: 0.9rem; }
+    header h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-top: 0.4rem; }
+    header p { opacity: 0.72; font-size: 0.9rem; margin-top: 0.2rem; }
+
+    nav {
+      background: var(--ocean-mid);
+      display: flex;
+      border-bottom: 3px solid var(--reef);
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--white);
+      background: rgba(26,188,156,0.2);
+    }
+
+    main {
+      max-width: 1050px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
 
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       color: var(--ocean);
-      border-bottom: 2px solid var(--reef);
-      padding-bottom: 0.5rem;
-      margin: 3rem 0 1.5rem;
+      border-left: 5px solid var(--reef);
+      padding-left: 0.9rem;
+      margin: 2.5rem 0 1.4rem;
     }
 
-    .course-list { list-style: none; }
+    .section-title:first-child { margin-top: 0; }
+
+    /* STAT BANNER */
+    .stat-banner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-box {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.2rem 1rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(10,61,98,0.08);
+      border-top: 4px solid var(--reef);
+    }
+
+    .stat-box .val {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--ocean);
+    }
+
+    .stat-box .lbl {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.2rem;
+    }
+
+    /* COURSE LIST FORMAT (NEW) */
     .course-item {
       background: var(--white);
       margin-bottom: 0.6rem;
@@ -52,31 +132,100 @@
     .level-tag {
       min-width: 45px;
       text-align: center;
-      font-size: 0.75rem;
-      padding: 0.2rem 0.5rem;
-      border-radius: 6px;
+      font-size: 0.72rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 10px;
       font-weight: 700;
       margin-right: 1.2rem;
     }
 
-    .lvl-m2 { background: #d5f5e3; color: #1a7a4a; }
-    .lvl-m1 { background: #d6eaf8; color: #1a5276; }
-    .lvl-l3 { background: #fdebd0; color: #9c5a00; }
-    .lvl-l2 { background: #fce4ec; color: #880e4f; }
-    .lvl-l1 { background: #e8daef; color: #5b2c6f; }
+    .lvl-m2  { background: #d5f5e3; color: #1a7a4a; }
+    .lvl-m1  { background: #d6eaf8; color: #1a5276; }
+    .lvl-l3  { background: #fdebd0; color: #9c5a00; }
+    .lvl-l2  { background: #fce4ec; color: #880e4f; }
+    .lvl-l1  { background: #e8daef; color: #5b2c6f; }
 
-    .course-name { font-weight: 600; color: var(--ocean); }
+    .course-name { font-weight: 600; color: var(--ocean); font-size: 0.95rem; }
     .course-context { margin-left: auto; font-size: 0.85rem; color: var(--text-light); font-style: italic; }
 
-    /* Réutilisation des styles pour Formation et Mobilité de ta page précédente */
-    .formation-card { background: var(--white); border-radius: 10px; padding: 1.2rem; margin-bottom: 1rem; border-left: 4px solid var(--reef); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    .fc-title { font-weight: 700; font-size: 1rem; color: var(--text); }
-    .fc-orgs { font-size: 0.85rem; color: var(--ocean-mid); }
+    /* FORMATION CARDS */
+    .formation-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
 
-    .mob-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-    .mob-card { background: var(--white); padding: 1rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-top: 3px solid var(--reef); }
+    .formation-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.3rem 1.5rem;
+      box-shadow: 0 2px 10px rgba(10,61,98,0.07);
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      border-left: 4px solid transparent;
+    }
 
-    footer { text-align: center; padding: 3rem; color: var(--text-light); font-size: 0.85rem; }
+    .formation-card.new-entry { border-left-color: var(--reef); }
+    .formation-card.regular   { border-left-color: #3498db; }
+    .formation-card.intl      { border-left-color: #e67e22; }
+
+    .fc-year { min-width: 50px; font-weight: 700; color: var(--reef); font-size: 1rem; }
+    .fc-title { font-weight: 700; color: var(--text); font-size: 0.98rem; margin-bottom: 0.2rem; }
+    .fc-orgs { font-size: 0.88rem; color: var(--ocean-mid); font-style: italic; margin-bottom: 0.3rem; }
+    .fc-detail { font-size: 0.85rem; color: var(--text-light); }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 10px;
+      font-weight: 700;
+      margin-right: 0.3rem;
+    }
+
+    .badge-new   { background: var(--reef); color: var(--white); }
+    .badge-intl  { background: #fdebd0; color: #9c5a00; }
+    .badge-media { background: #e8daef; color: #5b2c6f; }
+    .badge-inst  { background: #d6eaf8; color: #1a5276; }
+
+    /* MOBILITY */
+    .mobility-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .mob-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 2px 10px rgba(10,61,98,0.07);
+    }
+
+    .mob-card .flag { font-size: 1.6rem; margin-bottom: 0.5rem; }
+    .mob-card .place { font-weight: 700; color: var(--ocean); font-size: 0.95rem; }
+    .mob-card .years { font-size: 0.82rem; color: var(--reef); font-weight: 600; }
+    .mob-card .desc  { font-size: 0.84rem; color: var(--text-light); margin-top: 0.3rem; }
+
+    footer {
+      background: var(--ocean);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.82rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 700px) {
+      header { padding: 1.5rem; }
+      .stat-banner { grid-template-columns: 1fr 1fr; }
+      .mobility-grid { grid-template-columns: 1fr; }
+      .course-item { flex-direction: column; align-items: flex-start; gap: 5px; }
+      .course-context { margin-left: 0; }
+    }
   </style>
 </head>
 <body>
@@ -84,114 +233,168 @@
 <header>
   <a href="index.html">← Retour à la présentation</a>
   <h1>Enseignements & Dissémination</h1>
+  <p>Cours universitaires, formations professionnelles, mobilité internationale et transfert de savoirs</p>
 </header>
 
 <nav>
   <a href="index.html">Présentation</a>
-  <a href="recherche.html">Travaux</a>
+  <a href="recherche.html">Travaux de Recherche</a>
   <a href="projets.html">Projets</a>
   <a href="enseignement.html" class="active">Enseignements</a>
 </nav>
 
 <main>
 
-  <h2 class="section-title">Enseignements Universitaires</h2>
-
-  <h3 style="margin-bottom:1rem; font-size:1.1rem; color: var(--text-light);">Second Cycle (Master)</h3>
-  <ul class="course-list">
-    <li class="course-item">
-      <span class="level-tag lvl-m2">M2</span>
-      <span class="course-name">Macroéconomie appliquée</span>
-      <span class="course-context">Économie appliquée</span>
-    </li>
-    <li class="course-item">
-      <span class="level-tag lvl-m2">M2</span>
-      <span class="course-name">Recherche opérationnelle & Optimisation</span>
-      <span class="course-context">Économie appliquée</span>
-    </li>
-    <li class="course-item">
-      <span class="level-tag lvl-m2">M2</span>
-      <span class="course-name">Atelier d'économie appliquée</span>
-      <span class="course-context">Expertise Économique</span>
-    </li>
-    <li class="course-item">
-      <span class="level-tag lvl-m2">M2</span>
-      <span class="course-name">Évaluation économique des risques naturels</span>
-      <span class="course-context">Ressources & Risques</span>
-    </li>
-    <li class="course-item">
-      <span class="level-tag lvl-m1">M1</span>
-      <span class="course-name">Développement soutenable et insularité</span>
-      <span class="course-context">Économie appliquée</span>
-    </li>
-    <li class="course-item">
-      <span class="level-tag lvl-m1">M1</span>
-      <span class="course-name">Modélisation économique & Économétrie</span>
-      <span class="course-context">Économie</span>
-    </li>
-  </ul>
-
-  <h3 style="margin: 2rem 0 1rem; font-size:1.1rem; color: var(--text-light);">Premier Cycle (Licence)</h3>
-  <ul class="course-list">
-    <li class="course-item">
-      <span class="level-tag lvl-l3">L3</span>
-      <span class="course-name">Statistiques Appliquées à la gestion</span>
-      <span class="course-context">AES</span>
-    </li>
-    <li class="course-item">
-      <span class="level-tag lvl-l2">L2</span>
-      <span class="course-name">Politiques publiques et environnementales</span>
-      <span class="course-context">AES</span>
-    </li>
-    <li class="course-item">
-      <span class="level-tag lvl-l1">L1</span>
-      <span class="course-name">Principes Généraux de l'Économie</span>
-      <span class="course-context">Portail Éco-AES</span>
-    </li>
-    <li class="course-item">
-      <span class="level-tag lvl-l1">L1</span>
-      <span class="course-name">Microéconomie</span>
-      <span class="course-context">AES / Économie-Gestion</span>
-    </li>
-  </ul>
-
-  <h2 class="section-title">Mobilité Internationale</h2>
-  <div class="mob-grid">
-    <div class="mob-card">
-      <strong>🇲🇬 Madagascar</strong><br>
-      <span style="font-size:0.9rem; color:var(--ocean);">Univ. Catholique de Madagascar</span><br>
-      <span style="font-size:0.8rem;">Macroéconomie approfondie (M2) & Séminaires de recherche.</span>
+  <div class="stat-banner">
+    <div class="stat-box">
+      <div class="val">20+</div>
+      <div class="lbl">Cours dispensés (depuis 2005)</div>
     </div>
-    <div class="mob-card">
-      <strong>🇰🇲 Comores</strong><br>
-      <span style="font-size:0.9rem; color:var(--ocean);">Université des Comores</span><br>
-      <span style="font-size:0.8rem;">Formation à la recherche scientifique (Master).</span>
+    <div class="stat-box">
+      <div class="val">800</div>
+      <div class="lbl">Étudiants max (L1 Économie)</div>
     </div>
-    <div class="mob-card">
-      <strong>🇫🇷 Mayotte</strong><br>
-      <span style="font-size:0.9rem; color:var(--ocean);">CUFR de Mayotte</span><br>
-      <span style="font-size:0.8rem;">Microéconomie et Statistiques (L1/L3).</span>
+    <div class="stat-box">
+      <div class="val">3</div>
+      <div class="lbl">Pays d'enseignement</div>
+    </div>
+    <div class="stat-box">
+      <div class="val">~4/an</div>
+      <div class="lbl">Mémoires de master encadrés</div>
     </div>
   </div>
 
-  <h2 class="section-title">Expertise & Formations Professionnelles</h2>
-  <div class="formation-card">
-    <div class="fc-title">Modélisation MEGC pour les agents d'État</div>
-    <div class="fc-orgs">INSTAT Madagascar — Banque Mondiale (2026)</div>
+  <h2 class="section-title">Enseignements actuels — Université de La Réunion</h2>
+  
+  <div class="course-item">
+    <span class="level-tag lvl-m2">M2</span>
+    <span class="course-name">Macroéconomie appliquée / Recherche opérationnelle</span>
+    <span class="course-context">Économie appliquée</span>
   </div>
-  <div class="formation-card">
-    <div class="fc-title">Transition écologique à La Réunion</div>
-    <div class="fc-orgs">CNRS — Cycle de formation des agents de l'État (2024)</div>
+  <div class="course-item">
+    <span class="level-tag lvl-m2">M2</span>
+    <span class="course-name">Atelier d'économie appliquée</span>
+    <span class="course-context">Expertise Économique</span>
   </div>
-  <div class="formation-card">
-    <div class="fc-title">Interventions Médias (Le Monde, TV)</div>
-    <div class="fc-orgs">Vie chère, autonomie alimentaire et filière sucre (2025-2026)</div>
+  <div class="course-item">
+    <span class="level-tag lvl-m1">M1</span>
+    <span class="course-name">Développement soutenable et insularité</span>
+    <span class="course-context">Économie appliquée</span>
+  </div>
+  <div class="course-item">
+    <span class="level-tag lvl-l3">L3</span>
+    <span class="course-name">Statistiques Appliquées / Outils de gestion</span>
+    <span class="course-context">AES (Option TEG)</span>
+  </div>
+  <div class="course-item">
+    <span class="level-tag lvl-l2">L2</span>
+    <span class="course-name">Politiques publiques et environnementales</span>
+    <span class="course-context">AES</span>
+  </div>
+  <div class="course-item">
+    <span class="level-tag lvl-l1">L1</span>
+    <span class="course-name">Principes Généraux de l'Économie 1</span>
+    <span class="course-context">Portail Économie-AES</span>
+  </div>
+
+  <h2 class="section-title">Enseignements antérieurs</h2>
+
+  <div class="course-item">
+    <span class="level-tag lvl-m2">M2</span>
+    <span class="course-name">Évaluation économique et spatiale de l'environnement et des risques</span>
+    <span class="course-context">Ressources & Risques Naturels Tropicaux</span>
+  </div>
+  <div class="course-item">
+    <span class="level-tag lvl-m1">M1</span>
+    <span class="course-name">Modélisation économique / Économie de l'incertain</span>
+    <span class="course-context">Économie / DDAT</span>
+  </div>
+  <div class="course-item">
+    <span class="level-tag lvl-m1">M1</span>
+    <span class="course-name">Santé, Population, Éducation et Développement</span>
+    <span class="course-context">DDAT</span>
+  </div>
+  <div class="course-item">
+    <span class="level-tag lvl-l3">L3</span>
+    <span class="course-name">Économie industrielle / Statistiques</span>
+    <span class="course-context">AES / MASS (Nice)</span>
+  </div>
+  <div class="course-item">
+    <span class="level-tag lvl-l1">L1</span>
+    <span class="course-name">Microéconomie / Économie Politique</span>
+    <span class="course-context">AES / Éco-Gestion (Mayotte / Nice)</span>
+  </div>
+
+  <h2 class="section-title">Mobilité internationale d'enseignement</h2>
+  <div class="mobility-grid">
+    <div class="mob-card">
+      <div class="flag">🇲🇬</div>
+      <div class="place">Université Catholique de Madagascar</div>
+      <div class="years">2015–2018</div>
+      <div class="desc">Cours de macroéconomie approfondie (M2) · Séminaire de recherche</div>
+    </div>
+    <div class="mob-card">
+      <div class="flag">🇰🇲</div>
+      <div class="place">Université des Comores</div>
+      <div class="years">2013</div>
+      <div class="desc">Formation à la recherche scientifique (Masters)</div>
+    </div>
+    <div class="mob-card">
+      <div class="flag">🇫🇷</div>
+      <div class="place">Centre Universitaire de Mayotte</div>
+      <div class="years">2009–2012</div>
+      <div class="desc">Cours de microéconomie (L1 AES)</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Formations professionnelles & Dissémination</h2>
+  <div class="formation-list">
+    <div class="formation-card new-entry">
+      <div class="fc-year">2026</div>
+      <div class="fc-body">
+        <div class="fc-title"><span class="badge badge-new">Nouveau</span> Formation en Modélisation MEGC</div>
+        <div class="fc-orgs">INSTAT Madagascar — Banque Mondiale</div>
+      </div>
+    </div>
+    <div class="formation-card regular">
+      <div class="fc-year">2025</div>
+      <div class="fc-body">
+        <div class="fc-title"><span class="badge badge-inst">Tribune</span> Tribune dans <em>Le Monde</em></div>
+        <div class="fc-orgs">Vie chère dans les Outre-mer</div>
+      </div>
+    </div>
+    <div class="formation-card regular">
+      <div class="fc-year">2024</div>
+      <div class="fc-body">
+        <div class="fc-title"><span class="badge badge-inst">Formation</span> Transition écologique</div>
+        <div class="fc-orgs">CNRS — Agents d'État à La Réunion</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Responsabilités pédagogiques</h2>
+  <div class="formation-list">
+    <div class="formation-card regular">
+      <div class="fc-year">2022–</div>
+      <div class="fc-body">
+        <div class="fc-title">Responsable pédagogique — Licence 1 Économie-Gestion</div>
+        <div class="fc-orgs">Université de La Réunion</div>
+      </div>
+    </div>
+    <div class="formation-card regular">
+      <div class="fc-year">~4/an</div>
+      <div class="fc-body">
+        <div class="fc-title">Encadrement de mémoires de recherche et de rapports d'expertise</div>
+        <div class="fc-orgs">Master Économie Appliquée — Depuis 2008</div>
+      </div>
+    </div>
   </div>
 
 </main>
 
 <footer>
-  Sabine Garabedian — Université de La Réunion — CEMOI
+  Sabine Garabedian — Maître de conférences HDR — Université de La Réunion — CEMOI<br>
+  15 Avenue René Cassin, 97715 Saint-Denis Messag Cedex 9
 </footer>
 
 </body>
